@@ -33,9 +33,9 @@ export const CreatedTask = (props: Props) => {
       className={classes.container}
       title="component-createdtask"
     >
-      <Grid item xs={8}>
+      <Grid item xs={7} md={10}>
         <Grid container alignItems="center">
-          <Grid xs={2}>
+          <Grid xs={3} md={1} container>
             <IconButton
               onClick={onToggleStatus}
               title="createdtask-toggle-button"
@@ -53,7 +53,7 @@ export const CreatedTask = (props: Props) => {
               )}
             </IconButton>
           </Grid>
-          <Grid xs={10}>
+          <Grid xs={9} md={11}>
             <TextField
               title="createdtask-textfield"
               fullWidth
@@ -75,7 +75,7 @@ export const CreatedTask = (props: Props) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={4} container justify="flex-end">
+      <Grid item xs={5} md={2} container justify="flex-end">
         <PrioritySelectInput
           value={priority}
           onChange={(e) =>
