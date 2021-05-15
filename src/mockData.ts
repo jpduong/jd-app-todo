@@ -4,7 +4,7 @@ import { generateUniqueId } from "utils";
 export const mockData: Task[] = [
   {
     name: "check out Wes Bos",
-    priority: Priority.Important,
+    priority: Priority.Low,
     id: generateUniqueId(),
     status: Status.Active,
   },
