@@ -1,5 +1,5 @@
 import { Box, Paper } from "@material-ui/core";
-import { COLORS } from "index";
+import { COLORS } from "../constants";
 import React from "react";
 import { Task } from "types";
 import { CreatedTask } from "./CreatedTask";

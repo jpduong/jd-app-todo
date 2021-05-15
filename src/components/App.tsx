@@ -15,7 +15,7 @@ import { orderBy } from "lodash";
 import { mockData } from "mockData";
 import React, { useState } from "react";
 import "styles/App.css";
-import { Filter, OrderParams, Status, Task } from "types";
+import { Filter, OrderArgs, Status, Task } from "types";
 import { NewTask } from "./NewTask";
 import { SortBar, SortOption, sortOptions } from "./SortBar";
 import { TaskList } from "./TaskList";
@@ -31,11 +31,11 @@ export const App = () => {
   const handleAddTask = (task: Task) => setTasks([...tasks, task]);
 
   const handleDeleteTask = (taskId: Task["id"]) =>
-    setTasks([...tasks.filter((task) => task.id !== taskId)]);
+    setTasks(tasks.filter((task) => task.id !== taskId));
 
   const handleToggleStatus = (taskId: Task["id"]) =>
-    setTasks([
-      ...tasks.map((task) =>
+    setTasks(
+      tasks.map((task) =>
         task.id === taskId
           ? {
               ...task,
@@ -45,8 +45,8 @@ export const App = () => {
                   : Status.Active,
             }
           : task
-      ),
-    ]);
+      )
+    );
 
   const updateTaskById = (id: Task["id"], property: Task) => {
     const updatedTasks = tasks.map((task) =>
@@ -57,6 +57,7 @@ export const App = () => {
   };
 
   let filteredTasks: Task[] = [];
+
   switch (filter) {
     case Filter.All:
       filteredTasks = tasks;
@@ -72,7 +73,7 @@ export const App = () => {
   }
 
   const fieldNames: string[] = [];
-  const fieldOrders: OrderParams[] = [];
+  const fieldOrders: OrderArgs[] = [];
 
   [firstSort, secondSort].forEach((sort) => {
     const option = sortOptions.find((option) => option.value === sort);
@@ -81,10 +82,14 @@ export const App = () => {
     }
 
     fieldNames.push(option.field);
-    fieldOrders.push(option.value.split("_")[1] as OrderParams);
+    fieldOrders.push(option.value.split("_")[1] as OrderArgs);
   });
 
-  const sortedTasks: Task[] = orderBy(filteredTasks, fieldNames, fieldOrders);
+  const filteredAndSortedTasks: Task[] = orderBy(
+    filteredTasks,
+    fieldNames,
+    fieldOrders
+  );
 
   return (
     <Box className={classes.rootContainer}>
@@ -97,14 +102,14 @@ export const App = () => {
             <NewTask onAddTask={handleAddTask} />
           </Box>
           <TaskList
-            tasks={sortedTasks}
+            tasks={filteredAndSortedTasks}
             onDeleteTask={handleDeleteTask}
             onToggleStatus={handleToggleStatus}
             onUpdateTaskProperty={updateTaskById}
           >
             <>
               <FilterBar
-                total={sortedTasks.length}
+                total={filteredAndSortedTasks.length}
                 filter={filter}
                 onFilter={setFilter}
               />
@@ -115,8 +120,6 @@ export const App = () => {
               </Grid>
             </>
           </TaskList>
-          {/* <pre>{JSON.stringify(tasks, undefined, 2)}</pre> */}
-          {/* <pre>{JSON.stringify(firstSort, undefined, 2)}</pre> */}
         </Grid>
       </Container>
     </Box>

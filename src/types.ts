@@ -28,4 +28,4 @@ export enum Sort {
   Name = "name",
 }
 
-export type OrderParams = "asc" | "desc";
+export type OrderArgs = "asc" | "desc";

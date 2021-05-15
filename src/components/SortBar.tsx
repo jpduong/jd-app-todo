@@ -1,5 +1,5 @@
 import { makeStyles, MenuItem, Select } from "@material-ui/core";
-import { COLORS } from "index";
+import { COLORS } from "../constants";
 import React from "react";
 
 interface Props {

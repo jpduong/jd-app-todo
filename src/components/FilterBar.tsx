@@ -5,7 +5,7 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import { COLORS } from "index";
+import { COLORS } from "../constants";
 import React from "react";
 import { Filter } from "types";
 

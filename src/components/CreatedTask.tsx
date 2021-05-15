@@ -1,16 +1,10 @@
-import {
-  Grid,
-  IconButton,
-  makeStyles,
-  MenuItem,
-  Select,
-  TextField,
-} from "@material-ui/core";
+import { Grid, IconButton, makeStyles, TextField } from "@material-ui/core";
 import { ClearRounded, RadioButtonUncheckedRounded } from "@material-ui/icons";
 import checkIcon from "assets/icons/icon-check.svg";
-import { COLORS } from "index";
 import React from "react";
-import { Priority, Status, Task } from "types";
+import { Status, Task } from "types";
+import { COLORS } from "../constants";
+import { PrioritySelectInput } from "./PrioritySelectInput";
 
 interface Props extends Task {
   onDeleteTask: () => void;
@@ -33,11 +27,7 @@ export const CreatedTask = (props: Props) => {
   const isCompletedTask = status === Status.Completed;
 
   return (
-    <Grid
-      container
-      justify="space-between"
-      style={{ borderBottom: `1px solid ${COLORS.VERY_DARK_GRAY_BLUE_1}` }}
-    >
+    <Grid container justify="space-between" className={classes.container}>
       <Grid item>
         <Grid container alignItems="center">
           <IconButton onClick={onToggleStatus}>
@@ -68,16 +58,12 @@ export const CreatedTask = (props: Props) => {
         </Grid>
       </Grid>
       <Grid item>
-        <Select
+        <PrioritySelectInput
           value={priority}
           onChange={(e) =>
             onUpdateTaskProperty(id, { priority: e.target.value } as Task)
           }
-        >
-          <MenuItem value={Priority.Low}>Low</MenuItem>
-          <MenuItem value={Priority.Normal}>Normal</MenuItem>
-          <MenuItem value={Priority.Important}>Important</MenuItem>
-        </Select>
+        />
         <IconButton onClick={onDeleteTask}>
           <ClearRounded />
         </IconButton>
@@ -86,7 +72,10 @@ export const CreatedTask = (props: Props) => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
+  container: {
+    borderBottom: `1px solid ${COLORS.VERY_DARK_GRAY_BLUE_1}`,
+  },
   completedText: {
     textDecoration: "line-through",
     color: COLORS.DARK_GRAY_BLUE,
