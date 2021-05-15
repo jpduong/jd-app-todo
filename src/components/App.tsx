@@ -1,5 +1,15 @@
-import { Box, Container } from "@material-ui/core";
+import {
+  Box,
+  Container,
+  Grid,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
+import { SortRounded } from "@material-ui/icons";
+import backgroundDesktopImg from "assets/images/bg-desktop-dark.jpg";
+import backgroundMobileImg from "assets/images/bg-mobile-dark.jpg";
 import { FilterBar } from "components/FilterBar";
+import { useMobileView } from "hooks/useMobileView";
 import { useSelectInput } from "hooks/useSelectInput";
 import { orderBy } from "lodash";
 import { mockData } from "mockData";
@@ -15,6 +25,8 @@ export const App = () => {
   const [filter, setFilter] = useState<Filter>(Filter.All);
   const [firstSort, bindFirstSort] = useSelectInput<SortOption>("name_asc");
   const [secondSort, bindSecondSort] = useSelectInput<SortOption>("");
+  const classes = useStyles();
+  const [isMobileView] = useMobileView();
 
   const handleAddTask = (task: Task) => setTasks([...tasks, task]);
 
@@ -75,25 +87,59 @@ export const App = () => {
   const sortedTasks: Task[] = orderBy(filteredTasks, fieldNames, fieldOrders);
 
   return (
-    <Container maxWidth="sm">
-      <Box mb={4}>
-        <NewTask onAddTask={handleAddTask} />
-      </Box>
-      <TaskList
-        tasks={sortedTasks}
-        onDeleteTask={handleDeleteTask}
-        onToggleStatus={handleToggleStatus}
-        onUpdateTaskProperty={updateTaskById}
-      />
-      <FilterBar
-        total={sortedTasks.length}
-        filter={filter}
-        onFilter={setFilter}
-      />
-      <SortBar {...bindFirstSort} />
-      <SortBar {...bindSecondSort} />
-      <pre>{JSON.stringify(tasks, undefined, 2)}</pre>
-      <pre>{JSON.stringify(firstSort, undefined, 2)}</pre>
-    </Container>
+    <Box className={classes.rootContainer}>
+      <Container maxWidth={isMobileView ? "sm" : "md"}>
+        <Box pt={8} pb={6}>
+          <Typography variant="h4">TODO</Typography>
+        </Box>
+        <Grid>
+          <Box mb={4}>
+            <NewTask onAddTask={handleAddTask} />
+          </Box>
+          <TaskList
+            tasks={sortedTasks}
+            onDeleteTask={handleDeleteTask}
+            onToggleStatus={handleToggleStatus}
+            onUpdateTaskProperty={updateTaskById}
+          >
+            <>
+              <FilterBar
+                total={sortedTasks.length}
+                filter={filter}
+                onFilter={setFilter}
+              />
+              <Grid container className={classes.sortContainer}>
+                <SortRounded />
+                <SortBar {...bindFirstSort} />
+                <SortBar {...bindSecondSort} />
+              </Grid>
+            </>
+          </TaskList>
+          {/* <pre>{JSON.stringify(tasks, undefined, 2)}</pre> */}
+          {/* <pre>{JSON.stringify(firstSort, undefined, 2)}</pre> */}
+        </Grid>
+      </Container>
+    </Box>
   );
 };
+
+const useStyles = makeStyles((theme) => ({
+  rootContainer: {
+    backgroundImage: `url(${backgroundMobileImg})`,
+    [theme.breakpoints.up("sm")]: {
+      backgroundImage: `url(${backgroundDesktopImg})`,
+      backgroundSize: "auto",
+    },
+    backgroundSize: "contain",
+    height: "100%",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top",
+  },
+  sortContainer: {
+    columnGap: theme.spacing(2),
+    padding: theme.spacing(1),
+  },
+  completedText: {
+    textDecoration: "line-through",
+  },
+}));

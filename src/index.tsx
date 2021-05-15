@@ -8,6 +8,7 @@ import {
   CssBaseline,
   MuiThemeProvider,
 } from "@material-ui/core";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
 export const COLORS = {
   VERY_DARK_BLUE: "#161722",
@@ -21,30 +22,63 @@ export const COLORS = {
   PURPLE: "#25283D",
 };
 
+const breakpoints = createBreakpoints({});
+
 const theme = createMuiTheme({
   overrides: {
+    MuiPaper: {
+      root: {
+        backgroundColor: "#181824",
+      },
+    },
     MuiCssBaseline: {
       "@global": {
         body: {
-          // backgroundColor: "#25283D",
           backgroundColor: "#181824",
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        "&:hover": {
+          backgroundColor: "transparent",
         },
       },
     },
   },
   typography: {
     fontFamily: ["Josefin Sans", "sans-serif"].join(","),
+    body1: {
+      fontSize: 14,
+      [breakpoints.up("sm")]: {
+        fontSize: 16,
+      },
+    },
     subtitle2: {
       color: COLORS.DARK_GRAY_BLUE,
-      "&:hover": {
-        color: COLORS.LIGHT_GRAY_BLUE_HOVER,
+      fontSize: 12,
+      [breakpoints.up("sm")]: {
+        fontSize: 14,
       },
+    },
+    h4: {
+      letterSpacing: "10px",
     },
   },
   props: {
+    MuiButtonBase: {
+      disableRipple: true,
+      disableTouchRipple: true,
+    },
+    MuiSvgIcon: {
+      htmlColor: COLORS.DARK_GRAY_BLUE,
+    },
     MuiTextField: {
       InputProps: {
         disableUnderline: true,
+      },
+      style: {
+        width: 250,
       },
     },
     MuiSelect: {

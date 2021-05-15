@@ -32,25 +32,36 @@ export const CreatedTask = (props: Props) => {
     priority,
     onUpdateTaskProperty,
   } = props;
-  const classes = useStyles(0);
+  const classes = useStyles();
 
   return (
-    <Box p="20px" bgcolor={COLORS.PURPLE}>
-      <Grid container justify="space-between">
-        <IconButton onClick={onToggleStatus}>
-          {status === Status.Active ? (
-            <RadioButtonUncheckedRounded />
-          ) : (
-            <DoneRounded />
-          )}
-        </IconButton>
-        <TextField
-          value={name}
-          onChange={(e) =>
-            onUpdateTaskProperty(id, { name: e.target.value } as Task)
-          }
-          className={`${status === Status.Completed && classes.completedText}`}
-        />
+    <Grid
+      container
+      justify="space-between"
+      style={{ borderBottom: `1px solid ${COLORS.VERY_DARK_GRAY_BLUE_1}` }}
+    >
+      <Grid item>
+        <Grid container alignItems="center">
+          <IconButton onClick={onToggleStatus}>
+            {status === Status.Active ? (
+              <RadioButtonUncheckedRounded />
+            ) : (
+              <DoneRounded />
+            )}
+          </IconButton>
+          <TextField
+            multiline
+            value={name}
+            onChange={(e) =>
+              onUpdateTaskProperty(id, { name: e.target.value } as Task)
+            }
+            className={`${
+              status === Status.Completed && classes.completedText
+            }`}
+          />
+        </Grid>
+      </Grid>
+      <Grid item>
         <Select
           value={priority}
           onChange={(e) =>
@@ -65,7 +76,7 @@ export const CreatedTask = (props: Props) => {
           <ClearRounded />
         </IconButton>
       </Grid>
-    </Box>
+    </Grid>
   );
 };
 

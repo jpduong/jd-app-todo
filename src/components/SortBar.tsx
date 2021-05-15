@@ -34,7 +34,10 @@ export const SortBar = (props: Props) => {
   const classes = useStyles();
 
   return (
-    <Select {...props}>
+    <Select
+      {...props}
+      classes={{ root: classes.selectRoot, icon: classes.selectIcon }}
+    >
       {sortOptions.map((option) => (
         <MenuItem key={option.value} value={option.value}>
           {option.label}
@@ -45,8 +48,18 @@ export const SortBar = (props: Props) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  selectIcon: {
+    color: COLORS.DARK_GRAY_BLUE,
+  },
   spacingText: { marginLeft: theme.spacing(1), marginRight: theme.spacing(1) },
   activeFilter: {
     color: COLORS.LIGHT_BLUE,
+  },
+  selectRoot: {
+    fontSize: 12,
+    color: COLORS.DARK_GRAY_BLUE,
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 14,
+    },
   },
 }));

@@ -3,6 +3,7 @@ import {
   Grid,
   IconButton,
   MenuItem,
+  Paper,
   Select,
   TextField,
   Typography,
@@ -49,15 +50,15 @@ export const NewTask = (props: Props) => {
   };
 
   return (
-    <Box p="20px" bgcolor={COLORS.PURPLE}>
-      <Grid container justify="space-between">
-        <TextField placeholder="Create a new todo.." {...bindName} />
-        <Select {...bindPriority}>
-          <MenuItem value={Priority.Low}>Low</MenuItem>
-          <MenuItem value={Priority.Normal}>Normal</MenuItem>
-          <MenuItem value={Priority.Important}>Important</MenuItem>
-        </Select>
-        <Grid>
+    <Box p={1} bgcolor={COLORS.PURPLE} component={Paper}>
+      <Grid container justify="space-between" alignItems="center">
+        <TextField placeholder="Create a new todo..." {...bindName} multiline />
+        <Grid item>
+          <Select {...bindPriority}>
+            <MenuItem value={Priority.Low}>Low</MenuItem>
+            <MenuItem value={Priority.Normal}>Normal</MenuItem>
+            <MenuItem value={Priority.Important}>Important</MenuItem>
+          </Select>
           <IconButton onClick={handleSubmit}>
             <AddRounded />
           </IconButton>

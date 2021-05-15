@@ -1,3 +1,5 @@
+import { Box, Paper } from "@material-ui/core";
+import { COLORS } from "index";
 import React from "react";
 import { Task } from "types";
 import { CreatedTask } from "./CreatedTask";
@@ -7,13 +9,20 @@ interface Props {
   onDeleteTask: (taskId: Task["id"]) => void;
   onToggleStatus: (taskId: Task["id"]) => void;
   onUpdateTaskProperty: (id: Task["id"], prop: Task) => void;
+  children: JSX.Element;
 }
 
 export const TaskList = (props: Props) => {
-  const { tasks, onDeleteTask, onToggleStatus, onUpdateTaskProperty } = props;
+  const {
+    tasks,
+    onDeleteTask,
+    onToggleStatus,
+    onUpdateTaskProperty,
+    children,
+  } = props;
 
   return (
-    <div>
+    <Box p={1} component={Paper} bgcolor={COLORS.PURPLE}>
       {tasks.map((task) => (
         <CreatedTask
           key={task.id}
@@ -23,6 +32,7 @@ export const TaskList = (props: Props) => {
           onUpdateTaskProperty={onUpdateTaskProperty}
         />
       ))}
-    </div>
+      {children}
+    </Box>
   );
 };

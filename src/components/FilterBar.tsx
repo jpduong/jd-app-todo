@@ -20,7 +20,7 @@ export const FilterBar = (props: Props) => {
   const classes = useStyles();
 
   return (
-    <Box p={2} bgcolor={COLORS.PURPLE}>
+    <Box p={1} bgcolor={COLORS.PURPLE}>
       <Grid container justify="space-between">
         <Grid item>
           <Typography variant="subtitle2">Total: {total}</Typography>
