@@ -1,5 +1,4 @@
 import {
-  Box,
   Grid,
   IconButton,
   makeStyles,
@@ -7,11 +6,8 @@ import {
   Select,
   TextField,
 } from "@material-ui/core";
-import {
-  ClearRounded,
-  DoneRounded,
-  RadioButtonUncheckedRounded,
-} from "@material-ui/icons";
+import { ClearRounded, RadioButtonUncheckedRounded } from "@material-ui/icons";
+import checkIcon from "assets/icons/icon-check.svg";
 import { COLORS } from "index";
 import React from "react";
 import { Priority, Status, Task } from "types";
@@ -34,6 +30,8 @@ export const CreatedTask = (props: Props) => {
   } = props;
   const classes = useStyles();
 
+  const isCompletedTask = status === Status.Completed;
+
   return (
     <Grid
       container
@@ -46,18 +44,26 @@ export const CreatedTask = (props: Props) => {
             {status === Status.Active ? (
               <RadioButtonUncheckedRounded />
             ) : (
-              <DoneRounded />
+              <div className={classes.checkedCircleContainer}>
+                <img src={checkIcon} alt="checked icon" />
+              </div>
             )}
           </IconButton>
           <TextField
             multiline
             value={name}
+            inputProps={
+              (isCompletedTask && {
+                style: {
+                  color: COLORS.DARK_GRAY_BLUE,
+                },
+              }) ||
+              {}
+            }
             onChange={(e) =>
               onUpdateTaskProperty(id, { name: e.target.value } as Task)
             }
-            className={`${
-              status === Status.Completed && classes.completedText
-            }`}
+            className={`${isCompletedTask && classes.completedText}`}
           />
         </Grid>
       </Grid>
@@ -83,5 +89,15 @@ export const CreatedTask = (props: Props) => {
 const useStyles = makeStyles((theme) => ({
   completedText: {
     textDecoration: "line-through",
+    color: COLORS.DARK_GRAY_BLUE,
+  },
+  checkedCircleContainer: {
+    height: 24,
+    width: 24,
+    borderRadius: "50%",
+    background: "linear-gradient(135deg,#57ddff, #c058f3)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
