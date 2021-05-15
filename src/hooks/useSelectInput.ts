@@ -13,7 +13,7 @@ export const useSelectInput = <T>(initialValue: T) => {
         value: unknown;
       }>
     ) => {
-      setValue(e.target.value as T); // to fix
+      setValue(e.target.value as T);
     },
   };
 
