@@ -1,4 +1,5 @@
-import { Select, MenuItem } from "@material-ui/core";
+import { Select, MenuItem, Typography } from "@material-ui/core";
+import { COLORS } from "../constants";
 import React from "react";
 import { Priority, SelectEvent } from "types";
 
@@ -11,9 +12,15 @@ interface Props {
 export const PrioritySelectInput = (props: Props) => {
   return (
     <Select {...props} title="component-priorityselectfield">
-      <MenuItem value={Priority.Low}>Low</MenuItem>
-      <MenuItem value={Priority.Normal}>Normal</MenuItem>
-      <MenuItem value={Priority.Important}>Important</MenuItem>
+      <MenuItem value={Priority.Low}>
+        <Typography style={{ color: COLORS.GREEN }}>Low</Typography>
+      </MenuItem>
+      <MenuItem value={Priority.Normal}>
+        <Typography style={{ color: COLORS.YELLOW }}>Normal</Typography>
+      </MenuItem>
+      <MenuItem value={Priority.Important}>
+        <Typography style={{ color: COLORS.ORANGE }}>Important</Typography>
+      </MenuItem>
     </Select>
   );
 };

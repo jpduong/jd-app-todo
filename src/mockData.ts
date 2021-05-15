@@ -16,7 +16,7 @@ export const mockData: Task[] = [
   },
   {
     name: "eat",
-    priority: Priority.Important,
+    priority: Priority.Normal,
     id: generateUniqueId(),
     status: Status.Completed,
   },

@@ -8,4 +8,7 @@ export const COLORS = {
   VERY_DARK_GRAY_BLUE_2: "#393a4c",
   LIGHT_BLUE: "#4B7BE0",
   PURPLE: "#25283D",
+  ORANGE: "#FDAC41",
+  YELLOW: "#FEED73",
+  GREEN: "#39DA8A",
 };

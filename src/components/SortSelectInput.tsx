@@ -33,7 +33,7 @@ export const SortSelectInput = (props: Props) => {
     <Select
       title="component-sortselectinput"
       {...props}
-      classes={{ root: classes.selectRoot, icon: classes.selectIcon }}
+      classes={{ root: classes.selectRoot }}
     >
       {sortOptions.map((option) => (
         <MenuItem key={option.value} value={option.value}>
@@ -45,9 +45,6 @@ export const SortSelectInput = (props: Props) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  selectIcon: {
-    color: COLORS.DARK_GRAY_BLUE,
-  },
   spacingText: { marginLeft: theme.spacing(1), marginRight: theme.spacing(1) },
   activeFilter: {
     color: COLORS.LIGHT_BLUE,

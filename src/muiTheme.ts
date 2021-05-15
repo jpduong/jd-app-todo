@@ -32,6 +32,9 @@ export const muiTheme = createMuiTheme({
           backgroundColor: "transparent",
         },
       },
+      icon: {
+        color: COLORS.DARK_GRAY_BLUE,
+      },
     },
   },
   typography: {
