@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SelectEvent } from "types";
 
 export const useSelectInput = <T>(initialValue: T) => {
   const [value, setValue] = useState(initialValue);
@@ -7,12 +8,7 @@ export const useSelectInput = <T>(initialValue: T) => {
 
   const bind = {
     value,
-    onChange: (
-      e: React.ChangeEvent<{
-        name?: string | undefined;
-        value: unknown;
-      }>
-    ) => {
+    onChange: (e: SelectEvent) => {
       setValue(e.target.value as T);
     },
   };

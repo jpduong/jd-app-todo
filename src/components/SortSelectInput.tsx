@@ -1,15 +1,11 @@
 import { makeStyles, MenuItem, Select } from "@material-ui/core";
 import { COLORS } from "../constants";
 import React from "react";
+import { SelectEvent } from "types";
 
 interface Props {
   value: string;
-  onChange: (
-    e: React.ChangeEvent<{
-      name?: string | undefined;
-      value: unknown;
-    }>
-  ) => void;
+  onChange: (e: SelectEvent) => void;
 }
 
 export const sortOptions = [

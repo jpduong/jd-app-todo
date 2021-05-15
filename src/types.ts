@@ -29,3 +29,8 @@ export enum Sort {
 }
 
 export type OrderArgs = "asc" | "desc";
+
+export type SelectEvent = React.ChangeEvent<{
+  name?: string | undefined;
+  value: unknown;
+}>;
