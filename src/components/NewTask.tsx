@@ -56,14 +56,17 @@ export const NewTask = (props: Props) => {
       title="component-newtask"
     >
       <Grid container justify="space-between" alignItems="center">
-        <TextField
-          placeholder="Create a new todo..."
-          {...bindName}
-          multiline
-          title="newtask-textfield"
-          autoFocus
-        />
-        <Grid item>
+        <Grid item xs={8}>
+          <TextField
+            placeholder="Create a new todo..."
+            {...bindName}
+            fullWidth
+            multiline
+            title="newtask-textfield"
+            autoFocus
+          />
+        </Grid>
+        <Grid item xs={4} container justify="flex-end">
           <PrioritySelectInput {...bindPriority} />
           <IconButton onClick={handleSubmit} title="newtask-submit-button">
             <AddRounded />

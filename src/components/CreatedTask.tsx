@@ -33,44 +33,49 @@ export const CreatedTask = (props: Props) => {
       className={classes.container}
       title="component-createdtask"
     >
-      <Grid item>
+      <Grid item xs={8}>
         <Grid container alignItems="center">
-          <IconButton
-            onClick={onToggleStatus}
-            title="createdtask-toggle-button"
-          >
-            {status === Status.Active ? (
-              <RadioButtonUncheckedRounded />
-            ) : (
-              <div className={classes.checkedCircleContainer}>
-                <img
-                  src={checkIcon}
-                  alt="checked icon"
-                  title="created-task-active-icon"
-                />
-              </div>
-            )}
-          </IconButton>
-          <TextField
-            title="createdtask-textfield"
-            multiline
-            value={name}
-            inputProps={
-              (isCompletedTask && {
-                style: {
-                  color: COLORS.DARK_GRAY_BLUE,
-                },
-              }) ||
-              {}
-            }
-            onChange={(e) =>
-              onUpdateTaskProperty(id, { name: e.target.value } as Task)
-            }
-            className={`${isCompletedTask && classes.completedText}`}
-          />
+          <Grid xs={2}>
+            <IconButton
+              onClick={onToggleStatus}
+              title="createdtask-toggle-button"
+            >
+              {status === Status.Active ? (
+                <RadioButtonUncheckedRounded />
+              ) : (
+                <div className={classes.checkedCircleContainer}>
+                  <img
+                    src={checkIcon}
+                    alt="checked icon"
+                    title="created-task-active-icon"
+                  />
+                </div>
+              )}
+            </IconButton>
+          </Grid>
+          <Grid xs={10}>
+            <TextField
+              title="createdtask-textfield"
+              fullWidth
+              multiline
+              value={name}
+              inputProps={
+                (isCompletedTask && {
+                  style: {
+                    color: COLORS.DARK_GRAY_BLUE,
+                  },
+                }) ||
+                {}
+              }
+              onChange={(e) =>
+                onUpdateTaskProperty(id, { name: e.target.value } as Task)
+              }
+              className={`${isCompletedTask && classes.completedText}`}
+            />
+          </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid item xs={4} container justify="flex-end">
         <PrioritySelectInput
           value={priority}
           onChange={(e) =>

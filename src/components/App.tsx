@@ -9,7 +9,6 @@ import { SortRounded } from "@material-ui/icons";
 import backgroundDesktopImg from "assets/images/bg-desktop-dark.jpg";
 import backgroundMobileImg from "assets/images/bg-mobile-dark.jpg";
 import { FilterBar } from "components/FilterBar";
-import { useMobileView } from "hooks/useMobileView";
 import { useSelectInput } from "hooks/useSelectInput";
 import { orderBy } from "lodash";
 import { mockData } from "mockData";
@@ -26,7 +25,6 @@ export const App = () => {
   const [firstSort, bindFirstSort] = useSelectInput<SortOption>("name_asc");
   const [secondSort, bindSecondSort] = useSelectInput<SortOption>("");
   const classes = useStyles();
-  const [isMobileView] = useMobileView();
 
   const handleAddTask = (task: Task) => setTasks([...tasks, task]);
 
@@ -93,7 +91,7 @@ export const App = () => {
 
   return (
     <Box className={classes.rootContainer} title="component-app">
-      <Container maxWidth={isMobileView ? "sm" : "md"}>
+      <Container maxWidth={"lg"}>
         <Box pt={8} pb={6}>
           <Typography variant="h4">TODO</Typography>
         </Box>

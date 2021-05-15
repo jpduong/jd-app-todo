@@ -65,9 +65,6 @@ export const muiTheme = createMuiTheme({
       InputProps: {
         disableUnderline: true,
       },
-      style: {
-        width: 250,
-      },
     },
     MuiSelect: {
       disableUnderline: true,
