@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { CreatedTask } from "components/CreatedTask";
 import { Priority, Status } from "types";
+import { generateUniqueId } from "utils";
 import { noOp } from "./utils";
 
 const mockProps = {
@@ -8,7 +9,7 @@ const mockProps = {
   onToggleStatus: noOp,
   onUpdateTaskProperty: noOp,
   name: "mock_name",
-  id: "iajrthdiltuarbrearara",
+  id: generateUniqueId(),
   priority: Priority.Important,
   status: Status.Completed,
 };

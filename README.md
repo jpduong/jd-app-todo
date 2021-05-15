@@ -33,6 +33,7 @@ Used a free resource as a UI guide, https://www.frontendmentor.io/challenges/tod
 ## Notes worth mention
 
 - Intentionally has initial data to help demo the app
+- Minimised the amount of libraries
 
 ## Running project locally
 
