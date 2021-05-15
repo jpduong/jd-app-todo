@@ -61,6 +61,7 @@ export const NewTask = (props: Props) => {
           {...bindName}
           multiline
           title="newtask-textfield"
+          autoFocus
         />
         <Grid item>
           <PrioritySelectInput {...bindPriority} />
