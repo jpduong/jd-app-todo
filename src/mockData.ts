@@ -10,7 +10,7 @@ export const mockData: Task[] = [
   },
   {
     name: "ace the coding challenge",
-    priority: Priority.Low,
+    priority: Priority.Important,
     id: generateRandomId(),
     status: Status.Completed,
   },

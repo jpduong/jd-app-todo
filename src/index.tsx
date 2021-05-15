@@ -45,6 +45,13 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiSelect: {
+      select: {
+        "&:focus": {
+          backgroundColor: "transparent",
+        },
+      },
+    },
   },
   typography: {
     fontFamily: ["Josefin Sans", "sans-serif"].join(","),
