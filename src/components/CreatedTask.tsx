@@ -27,19 +27,32 @@ export const CreatedTask = (props: Props) => {
   const isCompletedTask = status === Status.Completed;
 
   return (
-    <Grid container justify="space-between" className={classes.container}>
+    <Grid
+      container
+      justify="space-between"
+      className={classes.container}
+      title="component-createdtask"
+    >
       <Grid item>
         <Grid container alignItems="center">
-          <IconButton onClick={onToggleStatus}>
+          <IconButton
+            onClick={onToggleStatus}
+            title="createdtask-toggle-button"
+          >
             {status === Status.Active ? (
               <RadioButtonUncheckedRounded />
             ) : (
               <div className={classes.checkedCircleContainer}>
-                <img src={checkIcon} alt="checked icon" />
+                <img
+                  src={checkIcon}
+                  alt="checked icon"
+                  title="created-task-active-icon"
+                />
               </div>
             )}
           </IconButton>
           <TextField
+            title="createdtask-textfield"
             multiline
             value={name}
             inputProps={
@@ -64,7 +77,7 @@ export const CreatedTask = (props: Props) => {
             onUpdateTaskProperty(id, { priority: e.target.value } as Task)
           }
         />
-        <IconButton onClick={onDeleteTask}>
+        <IconButton onClick={onDeleteTask} title="createdtask-submit-button">
           <ClearRounded />
         </IconButton>
       </Grid>

@@ -30,11 +30,12 @@ export const sortOptions = [
 
 export type SortOption = typeof sortOptions[number]["value"];
 
-export const SortBar = (props: Props) => {
+export const SortSelectInput = (props: Props) => {
   const classes = useStyles();
 
   return (
     <Select
+      title="component-sortselectinput"
       {...props}
       classes={{ root: classes.selectRoot, icon: classes.selectIcon }}
     >

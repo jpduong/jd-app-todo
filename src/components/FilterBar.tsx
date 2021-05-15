@@ -20,14 +20,17 @@ export const FilterBar = (props: Props) => {
   const classes = useStyles();
 
   return (
-    <Box p={1} bgcolor={COLORS.PURPLE}>
+    <Box p={1} bgcolor={COLORS.PURPLE} title="component-filterbar">
       <Grid container justify="space-between">
         <Grid item>
-          <Typography variant="subtitle2">Total: {total}</Typography>
+          <Typography variant="subtitle2" title="filterbar-total-text">
+            Total: {total}
+          </Typography>
         </Grid>
         <Grid item>
           <ButtonBase onClick={() => onFilter(Filter.All)}>
             <Typography
+              title="filterbar-option"
               variant="subtitle2"
               className={`${filter === Filter.All && classes.activeFilter}`}
             >
@@ -36,6 +39,7 @@ export const FilterBar = (props: Props) => {
           </ButtonBase>
           <ButtonBase onClick={() => onFilter(Filter.Active)}>
             <Typography
+              title="filterbar-option"
               variant="subtitle2"
               className={`${classes.spacingText} ${
                 filter === Filter.Active && classes.activeFilter
@@ -46,6 +50,7 @@ export const FilterBar = (props: Props) => {
           </ButtonBase>
           <ButtonBase onClick={() => onFilter(Filter.Completed)}>
             <Typography
+              title="filterbar-option"
               variant="subtitle2"
               className={`${
                 filter === Filter.Completed && classes.activeFilter

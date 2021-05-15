@@ -17,7 +17,7 @@ import React, { useState } from "react";
 import "styles/App.css";
 import { Filter, OrderArgs, Status, Task } from "types";
 import { NewTask } from "./NewTask";
-import { SortBar, SortOption, sortOptions } from "./SortBar";
+import { SortSelectInput, SortOption, sortOptions } from "./SortSelectInput";
 import { TaskList } from "./TaskList";
 
 export const App = () => {
@@ -92,7 +92,7 @@ export const App = () => {
   );
 
   return (
-    <Box className={classes.rootContainer}>
+    <Box className={classes.rootContainer} title="component-app">
       <Container maxWidth={isMobileView ? "sm" : "md"}>
         <Box pt={8} pb={6}>
           <Typography variant="h4">TODO</Typography>
@@ -115,8 +115,8 @@ export const App = () => {
               />
               <Grid container className={classes.sortContainer}>
                 <SortRounded />
-                <SortBar {...bindFirstSort} />
-                <SortBar {...bindSecondSort} />
+                <SortSelectInput {...bindFirstSort} />
+                <SortSelectInput {...bindSecondSort} />
               </Grid>
             </>
           </TaskList>

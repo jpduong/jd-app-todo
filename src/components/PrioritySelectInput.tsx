@@ -10,11 +10,12 @@ interface Props {
       value: unknown;
     }>
   ) => void;
+  title?: string;
 }
 
 export const PrioritySelectInput = (props: Props) => {
   return (
-    <Select {...props}>
+    <Select {...props} title="component-priorityselectfield">
       <MenuItem value={Priority.Low}>Low</MenuItem>
       <MenuItem value={Priority.Normal}>Normal</MenuItem>
       <MenuItem value={Priority.Important}>Important</MenuItem>

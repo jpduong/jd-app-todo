@@ -1,23 +1,23 @@
 import { Task, Priority, Status } from "types";
-import { generateRandomId } from "utils";
+import { generateUniqueId } from "utils";
 
 export const mockData: Task[] = [
   {
     name: "check out Wes Bos",
     priority: Priority.Important,
-    id: generateRandomId(),
+    id: generateUniqueId(),
     status: Status.Active,
   },
   {
     name: "ace the coding challenge",
     priority: Priority.Important,
-    id: generateRandomId(),
+    id: generateUniqueId(),
     status: Status.Completed,
   },
   {
     name: "eat",
     priority: Priority.Important,
-    id: generateRandomId(),
+    id: generateUniqueId(),
     status: Status.Completed,
   },
 ];

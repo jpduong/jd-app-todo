@@ -11,7 +11,7 @@ import { useSelectInput } from "hooks/useSelectInput";
 import { useInput } from "hooks/useTextInput";
 import React, { useState } from "react";
 import { Priority, Status, Task } from "types";
-import { generateRandomId, validateTextInput } from "utils";
+import { generateUniqueId, validateTextInput } from "utils";
 import { COLORS } from "../constants";
 import { PrioritySelectInput } from "./PrioritySelectInput";
 
@@ -37,7 +37,7 @@ export const NewTask = (props: Props) => {
     const task = {
       name,
       priority,
-      id: generateRandomId(),
+      id: generateUniqueId(),
       status: Status.Active,
       createdAt: new Date(),
     };
@@ -49,17 +49,31 @@ export const NewTask = (props: Props) => {
   };
 
   return (
-    <Box p={1} bgcolor={COLORS.PURPLE} component={Paper}>
+    <Box
+      p={1}
+      bgcolor={COLORS.PURPLE}
+      component={Paper}
+      title="component-newtask"
+    >
       <Grid container justify="space-between" alignItems="center">
-        <TextField placeholder="Create a new todo..." {...bindName} multiline />
+        <TextField
+          placeholder="Create a new todo..."
+          {...bindName}
+          multiline
+          title="newtask-textfield"
+        />
         <Grid item>
           <PrioritySelectInput {...bindPriority} />
-          <IconButton onClick={handleSubmit}>
+          <IconButton onClick={handleSubmit} title="newtask-submit-button">
             <AddRounded />
           </IconButton>
         </Grid>
       </Grid>
-      {error && <Typography color="error">{error}</Typography>}
+      {error && (
+        <Typography color="error" title="newtask-error-text">
+          {error}
+        </Typography>
+      )}
     </Box>
   );
 };

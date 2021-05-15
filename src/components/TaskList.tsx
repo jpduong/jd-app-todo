@@ -22,7 +22,12 @@ export const TaskList = (props: Props) => {
   } = props;
 
   return (
-    <Box p={1} component={Paper} bgcolor={COLORS.PURPLE}>
+    <Box
+      p={1}
+      component={Paper}
+      bgcolor={COLORS.PURPLE}
+      title="component-tasklist"
+    >
       {tasks.map((task) => (
         <CreatedTask
           key={task.id}
