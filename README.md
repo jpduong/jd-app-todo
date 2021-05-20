@@ -29,11 +29,12 @@ Used a free resource as a UI guide, https://www.frontendmentor.io/challenges/tod
 
 - Assumed that after "adding" a task, you are able to edit it still
 - Assumed the sorting functionality can be done by multiple fields
+- Once a task is created, there is no text input validation when editing. This is to simplify the scope of the task
 
 ## Notes worth mention
 
 - Intentionally has initial data to help demo the app
-- Minimised the amount of libraries
+- Minimised the amount of libraries to show case vanilla code. In a production environment, I would use reliable 3rd-party libraries.
 
 ## Running project locally
 
