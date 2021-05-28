@@ -15,11 +15,11 @@ beforeEach(() => {
 
 describe("FilterBar render", () => {
   it("component", () => {
-    screen.getByTitle("component-filterbar");
+    expect(screen.getByTitle("component-filterbar")).toBeTruthy();
   });
 
   it("total text", () => {
-    screen.getByTitle("filterbar-total-text");
+    expect(screen.getByTitle("filterbar-total-text")).toBeTruthy();
   });
 
   it("filter texts", () => {
@@ -31,6 +31,6 @@ describe("FilterBar render", () => {
 
 describe("FilterBar props", () => {
   it("total", () => {
-    screen.getByText("Total: 1");
+    expect(screen.getByText("Total: 1")).toBeTruthy();
   });
 });

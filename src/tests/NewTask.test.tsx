@@ -12,19 +12,19 @@ beforeEach(() => {
 
 describe("NewTask render", () => {
   it("component", () => {
-    screen.getByTitle("component-newtask");
+    expect(screen.getByTitle("component-newtask")).toBeTruthy();
   });
 
   it("textfield", () => {
-    screen.getByTitle("newtask-textfield");
+    expect(screen.getByTitle("newtask-textfield")).toBeTruthy();
   });
 
   it("selectfield", () => {
-    screen.getByTitle("component-priorityselectfield");
+    expect(screen.getByTitle("component-priorityselectfield")).toBeTruthy();
   });
 
   it("submit button", () => {
-    screen.getByTitle("newtask-submit-button");
+    expect(screen.getByTitle("newtask-submit-button")).toBeTruthy();
   });
 
   it("error text does not render on initial", () => {
@@ -35,6 +35,6 @@ describe("NewTask render", () => {
     const button = screen.getByTitle("newtask-submit-button");
 
     fireEvent.click(button!);
-    screen.getByTitle("newtask-error-text");
+    expect(screen.getByTitle("newtask-error-text")).toBeTruthy();
   });
 });

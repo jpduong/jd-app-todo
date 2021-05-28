@@ -7,19 +7,19 @@ beforeEach(() => {
 
 describe("App render", () => {
   it("component", () => {
-    screen.getByTitle("component-app");
+    expect(screen.getByTitle("component-app")).toBeTruthy();
   });
 
   it("NewTask component", () => {
-    screen.getByTitle("component-newtask");
+    expect(screen.getByTitle("component-newtask")).toBeTruthy();
   });
 
   it("TaskList component", () => {
-    screen.getByTitle("component-tasklist");
+    expect(screen.getByTitle("component-tasklist")).toBeTruthy();
   });
 
   it("FilterBar component", () => {
-    screen.getByTitle("component-filterbar");
+    expect(screen.getByTitle("component-filterbar")).toBeTruthy();
   });
 
   it("SortSelectInput components", () => {

@@ -35,7 +35,7 @@ export const CreatedTask = (props: Props) => {
     >
       <Grid item xs={7} md={10}>
         <Grid container alignItems="center">
-          <Grid xs={3} md={1} container>
+          <Grid item xs={3} md={1} container>
             <IconButton
               onClick={onToggleStatus}
               title="createdtask-toggle-button"
@@ -53,7 +53,7 @@ export const CreatedTask = (props: Props) => {
               )}
             </IconButton>
           </Grid>
-          <Grid xs={9} md={11}>
+          <Grid item xs={9} md={11}>
             <TextField
               title="createdtask-textfield"
               fullWidth

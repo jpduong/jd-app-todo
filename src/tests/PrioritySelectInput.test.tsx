@@ -14,12 +14,12 @@ beforeEach(() => {
 
 describe("PrioritySelectInput render", () => {
   it("component", () => {
-    screen.getByTitle("component-priorityselectfield");
+    expect(screen.getByTitle("component-priorityselectfield")).toBeTruthy();
   });
 });
 
 describe("PrioritySelectInput props", () => {
   it("value", () => {
-    screen.getByText("Important");
+    expect(screen.getByText("Important")).toBeTruthy();
   });
 });

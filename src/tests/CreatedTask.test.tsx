@@ -20,36 +20,36 @@ beforeEach(() => {
 
 describe("CreatedTask render", () => {
   it("component", () => {
-    screen.getByTitle("component-createdtask");
+    expect(screen.getByTitle("component-createdtask")).toBeTruthy();
   });
 
   it("toggle button", () => {
-    screen.getByTitle("createdtask-toggle-button");
+    expect(screen.getByTitle("createdtask-toggle-button")).toBeTruthy();
   });
 
   it("textfield", () => {
-    screen.getByTitle("createdtask-textfield");
+    expect(screen.getByTitle("createdtask-textfield")).toBeTruthy();
   });
 
   it("selectfield", () => {
-    screen.getByTitle("component-priorityselectfield");
+    expect(screen.getByTitle("component-priorityselectfield")).toBeTruthy();
   });
 
   it("submit button", () => {
-    screen.getByTitle("createdtask-submit-button");
+    expect(screen.getByTitle("createdtask-submit-button")).toBeTruthy();
   });
 });
 
 describe("CreatedTask props", () => {
   it("name", () => {
-    screen.getByText(mockProps.name);
+    expect(screen.getByText(mockProps.name)).toBeTruthy();
   });
 
   it("priority", () => {
-    screen.getByText("Important");
+    expect(screen.getByText("Important")).toBeTruthy();
   });
 
   it("status", () => {
-    screen.getByTitle("created-task-active-icon");
+    expect(screen.getByTitle("created-task-active-icon")).toBeTruthy();
   });
 });

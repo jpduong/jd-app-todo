@@ -16,6 +16,6 @@ beforeEach(() => {
 
 describe("TaskList render", () => {
   it("component", () => {
-    screen.getByTitle("component-tasklist");
+    expect(screen.getByTitle("component-tasklist")).toBeTruthy();
   });
 });

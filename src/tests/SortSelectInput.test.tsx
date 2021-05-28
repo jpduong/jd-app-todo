@@ -13,12 +13,12 @@ beforeEach(() => {
 
 describe("SortSelectInput render", () => {
   it("component", () => {
-    screen.getByTitle("component-sortselectinput");
+    expect(screen.getByTitle("component-sortselectinput")).toBeTruthy();
   });
 });
 
 describe("SortSelectInput props", () => {
   it("value", () => {
-    screen.getByText(sortOptions[1].label);
+    expect(screen.getByText(sortOptions[1].label)).toBeTruthy();
   });
 });
